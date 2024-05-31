@@ -28,21 +28,80 @@
       color: $NeutralsColor2;
       font-family: $secondary-font;
     }
-    button {
-      margin-top: 2.6vh;
-      padding: 1.6rem 2.4rem;
-      background-color: $primaryColor1;
-      border: none;
-      color: $NeutralsColor8;
-      border-radius: 9rem;
-      font-size: $button1-font-size;
+    .hero__btn- {
+      height: 40px;
+      margin-top: 25px;
+      position: relative;
+      padding: 10px 20px;
+      border-radius: 7px;
+      border: 1px solid rgb(61, 106, 255);
+      font-size: 14px;
+      text-transform: uppercase;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.4s;
-      &:hover {
-        background-color: #6792ff;
+      letter-spacing: 2px;
+      background: transparent;
+      color: #fff;
+      overflow: hidden;
+      box-shadow: 0 0 0 0 transparent;
+      -webkit-transition: all 0.2s ease-in;
+      -moz-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+    }
+    
+    button:hover {
+      background: rgb(61, 106, 255);
+      box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+    }
+    
+    button:hover::before {
+      -webkit-animation: sh02 0.5s 0s linear;
+      -moz-animation: sh02 0.5s 0s linear;
+      animation: sh02 0.5s 0s linear;
+    }
+    
+    button::before {
+      content: '';
+      display: block;
+      width: 0px;
+      height: 86%;
+      position: absolute;
+      top: 7%;
+      left: 0%;
+      opacity: 0;
+      background: #fff;
+      box-shadow: 0 0 50px 30px #fff;
+      -webkit-transform: skewX(-20deg);
+      -moz-transform: skewX(-20deg);
+      -ms-transform: skewX(-20deg);
+      -o-transform: skewX(-20deg);
+      transform: skewX(-20deg);
+    }
+    
+    @keyframes sh02 {
+      from {
+        opacity: 0;
+        left: 0%;
+      }
+    
+      50% {
+        opacity: 1;
+      }
+    
+      to {
+        opacity: 0;
+        left: 100%;
       }
     }
+    
+    button:active {
+      box-shadow: 0 0 0 0 transparent;
+      -webkit-transition: box-shadow 0.2s ease-in;
+      -moz-transition: box-shadow 0.2s ease-in;
+      transition: box-shadow 0.2s ease-in;
+    }  
   }
   
   .hero__car_mega_search {
@@ -55,38 +114,114 @@
     .car_mega_search__tab {
       .car_mega_search__tab__header {
         @include d_flex();
+        border-radius: 20px;
+        background: #212121;
         justify-content: flex-start;
         gap: 4vw;
-        button {
-          color: $NeutralsColor4;
-          font-size: $button2-font-size;
-          font-family: $primary-font;
-          background-color: transparent;
-          font-weight: 600;
+        button,button::after {
+          padding: 10px 50px;
+          font-size: 20px;
           border: none;
-          cursor: pointer;
-          transition: all 0.4s;
-          padding-bottom: 3vh;
-          &:hover {
-            color: $NeutralsColor2;
-            border-color: $NeutralsColor2;
+          border-radius: 5px;
+          color: white;
+          background-color: transparent;
+          position: relative;
+        }
+        
+        button::after {
+          --move1: inset(50% 50% 50% 50%);
+          --move2: inset(31% 0 40% 0);
+          --move3: inset(39% 0 15% 0);
+          --move4: inset(45% 0 40% 0);
+          --move5: inset(45% 0 6% 0);
+          --move6: inset(14% 0 61% 0);
+          clip-path: var(--move1);
+          content: 'GLITCH';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: block;
+        }
+        
+        button:hover::after {
+          animation: glitch_4011 1s;
+          text-shadow: 10 10px 10px black;
+          animation-timing-function: steps(2, end);
+          text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+          background-color: transparent;
+          border: 3px solid rgb(0, 255, 213);
+        }
+        
+        button:hover {
+          text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+        }
+        
+        button:hover {
+          background-color: transparent;
+          border: 1px solid rgb(0, 255, 213);
+          box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+        }
+        
+        @keyframes glitch_4011 {
+          0% {
+            clip-path: var(--move1);
+            transform: translate(0px,-10px);
+          }
+        
+          10% {
+            clip-path: var(--move2);
+            transform: translate(-10px,10px);
+          }
+        
+          20% {
+            clip-path: var(--move3);
+            transform: translate(10px,0px);
+          }
+        
+          30% {
+            clip-path: var(--move4);
+            transform: translate(-10px,10px);
+          }
+        
+          40% {
+            clip-path: var(--move5);
+            transform: translate(10px,-10px);
+          }
+        
+          50% {
+            clip-path: var(--move6);
+            transform: translate(-10px,10px);
+          }
+        
+          60% {
+            clip-path: var(--move1);
+            transform: translate(10px,-10px);
+          }
+        
+          70% {
+            clip-path: var(--move3);
+            transform: translate(-10px,10px);
+          }
+        
+          80% {
+            clip-path: var(--move2);
+            transform: translate(10px,-10px);
+          }
+        
+          90% {
+            clip-path: var(--move4);
+            transform: translate(-10px,10px);
+          }
+        
+          100% {
+            clip-path: var(--move1);
+            transform: translate(0);
           }
         }
-        .active {
-          color: $NeutralsColor2;
-          border-bottom: 1px solid $NeutralsColor2;
-          z-index: +1;
-        }
-        &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 28.9%;
-          //   bottom: 23.6rem;
-          width: 90%;
-          height: 1px;
-          background-color: $NeutralsColor6;
-        }
+        
+        
       }
       .tab_items__filter_btns {
         @include d_flex($gap: 1.6rem, $justifiy: flex-start);
